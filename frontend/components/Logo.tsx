@@ -5,8 +5,8 @@ export default function Logo() {
     <Image
       src="/logo.png"
       alt="Memoir Logo"
-      width={220}
-      height={220}
+      width={120}
+      height={120}
       priority
     />
   );
