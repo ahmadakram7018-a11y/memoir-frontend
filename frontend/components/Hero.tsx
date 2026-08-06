@@ -5,7 +5,7 @@ export default function Hero() {
 
         {/* Left Side */}
         <div>
-          <h1 className="text-6xl font-bold leading-tight text-[#1D1D1D]">
+          <h1 className="text-black text-5xl font-bold leading-tight">
             A shared family
             <br />
             memoir created by

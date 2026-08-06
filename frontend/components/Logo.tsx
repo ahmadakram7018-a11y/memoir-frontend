@@ -6,7 +6,7 @@ export default function Logo() {
       src="/logo.png"
       alt="Memoir Logo"
       width={120}
-      height={120}
+      height={45}
       priority
     />
   );
