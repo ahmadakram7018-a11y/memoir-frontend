@@ -1,7 +1,7 @@
 import AnnouncementBar from "../components/AnnouncementBar";
 import Navbar from "../components/Navbar";
 
-import HandwrittenNote from "../components/onboarding/HandwrittenNote";
+import Subscription from "../components/Subscription";
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
       <AnnouncementBar />
       <Navbar />
     
-      <HandwrittenNote />
+      <Subscription />
     </main>
   );
 }
