@@ -1,10 +1,12 @@
+import Link from "next/link";
+
 export default function LoginForm() {
   return (
-    <section className="flex justify-center py-16">
-      <div className="w-[500px] bg-white border border-[#D8CEC7] p-10">
+    <section className="flex justify-center items-center py-20">
+      <div className="w-[650px] bg-white border border-[#D8CEC8] rounded-lg p-10">
 
         {/* Heading */}
-        <h1 className="text-center text-5xl font-bold text-black leading-tight">
+        <h1 className="text-center text-[40px] font-bold leading-[52px] text-black">
           Welcome Back !
           <br />
           Log in to your memoir
@@ -16,20 +18,29 @@ export default function LoginForm() {
         <input
           type="email"
           placeholder="Email"
-          className="w-full mt-10 border border-black p-3 text-black placeholder:text-gray-600"
+          className="w-full mt-10 px-5 py-4 border border-black rounded-lg text-[18px] text-black placeholder:text-gray-500 outline-none"
         />
 
         <input
           type="password"
           placeholder="Password"
-          className="w-full mt-4 border border-black p-3 text-black placeholder:text-gray-600"
+          className="w-full mt-4 px-5 py-4 border border-black rounded-lg text-[18px] text-black placeholder:text-gray-500 outline-none"
         />
 
         {/* Remember / Forgot */}
-        <div className="flex justify-between mt-6 text-black text-sm">
-          <p>Remember me</p>
+        <div className="flex justify-between items-center mt-6 text-black text-[20px]">
+          <label className="flex items-center gap-3 cursor-pointer">
+            <input
+              type="checkbox"
+              className="w-5 h-5 accent-[#B7A79A]"
+            />
+            <span className="text-[20px]">Remember me</span>
+          </label>
 
-          <a href="#" className="hover:underline">
+          <a
+            href="#"
+            className="text-[20px] font-normal hover:underline"
+          >
             Forgot your Password?
           </a>
         </div>
@@ -37,35 +48,35 @@ export default function LoginForm() {
         {/* Buttons */}
         <div className="grid grid-cols-2 gap-4 mt-6">
 
-          <button className="border border-black py-3 flex justify-center items-center gap-2 text-black rounded">
-
+          <button className="border border-black py-3 rounded-lg flex justify-center items-center gap-2 text-[15px] font-semibold text-black">
             <img
               src="https://www.google.com/favicon.ico"
               alt="Google"
               className="w-5 h-5"
             />
-
             Continue with Google
-
           </button>
 
-          <button className="bg-[#B7A79A] text-white rounded py-3 font-semibold">
+          <Link
+            href="/handwritten-note"
+            className="bg-[#B7A79A] text-white rounded py-3 font-semibold text-center flex items-center justify-center"
+          >
             Login
-          </button>
+          </Link>
 
         </div>
 
         {/* Bottom */}
-        <div className="border border-black mt-7 py-3 text-center text-black">
+        <div className="border border-black rounded-lg mt-7 py-4 text-center text-[20px] text-black">
 
           Not a member yet ?
 
-          <a
-            href="#"
-            className="text-green-700 font-semibold ml-2"
+          <Link
+            href="/signup"
+            className="text-[#3D7C47] text-[20px] font-semibold ml-2"
           >
             Sign up
-          </a>
+          </Link>
 
         </div>
 
