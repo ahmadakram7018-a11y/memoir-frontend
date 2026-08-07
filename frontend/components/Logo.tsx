@@ -5,9 +5,10 @@ export default function Logo() {
     <Image
       src="/logo.png"
       alt="Memoir Logo"
-      width={120}
-      height={45}
+      width={150}
+      height={20}
       priority
+      className="h-22 w-auto object-contain"
     />
   );
 }
