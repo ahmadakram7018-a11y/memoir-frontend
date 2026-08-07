@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { Caveat } from "next/font/google"; 
 
 import AnnouncementBar from "../components/AnnouncementBar";
 import Navbar from "../components/Navbar";
@@ -22,6 +23,11 @@ const playfair = Playfair_Display({
   weight: ["400", "600", "700"],
 });
 
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-caveat",
+});
+
 export const metadata: Metadata = {
   title: "Memoir",
   description: "Memoir Project",
@@ -35,7 +41,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable} ${caveat.variable} antialiased`}
     >
       <body className={`${playfair.className} min-h-screen bg-[#F8F2EF]`}>
         <AnnouncementBar />
