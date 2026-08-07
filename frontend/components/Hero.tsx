@@ -26,14 +26,14 @@ export default function Hero() {
         <div className="flex gap-10 mt-9 ml-2">
           <Link
             href="/signup"
-            className="w-[180px] h-[70px] bg-[#B7A79A] text-white text-[28px] font-bold px-8 py-3 rounded-md hover:bg-[#A79588] transition inline-block"
+            className="w-[180px] h-[70px] bg-[#B7A79A] text-white text-[28px] font-bold px-8 py-2 rounded-md hover:bg-[#A79588] transition inline-block"
           >
             Sign up
           </Link>
 
           <Link
             href="/login"
-            className="w-[180px] h-[70px] bg-[#B7A79A] text-white text-[28px] font-bold px-10 py-3 rounded-md hover:bg-[#A79588] transition inline-block"
+            className="w-[180px] h-[70px] bg-[#B7A79A] text-white text-[28px] font-bold px-10 py-2 rounded-md hover:bg-[#A79588] transition inline-block"
           >
             Login
           </Link>
