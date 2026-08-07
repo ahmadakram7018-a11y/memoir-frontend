@@ -11,16 +11,14 @@ export default function SignupForm() {
             Create your account
           </h2>
 
-          <div className="text-[20px] text-black text-right whitespace-nowrap">
+          <div className="flex flex-col items-end text-[20px] text-black whitespace-nowrap">
             <p>Have an account ?</p>
-
             <Link
               href="/login"
-              className="text-[#3D7C47] text-[20px] font-semibold"
+              className="text-[#3D7C47] text-[20px] font-semibold mr-3"
             >
               Login
             </Link>
-
           </div>
         </div>
 
@@ -36,21 +34,6 @@ export default function SignupForm() {
           className="w-full mt-4 px-5 py-4 border border-black rounded-lg text-[18px] text-black placeholder:text-gray-500 outline-none"
         />
 
-        <div className="grid grid-cols-2 gap-4 mt-4">
-
-          <input
-            type="password"
-            placeholder="Password"
-            className="px-5 py-4 border border-black rounded-lg text-[18px] text-black placeholder:text-gray-500 outline-none"
-          />
-
-          <input
-            type="password"
-            placeholder="Confirm password"
-            className="px-5 py-4 border border-black rounded-lg text-[18px] text-black placeholder:text-gray-500 outline-none"
-          />
-
-        </div>
 
         <Link
           href="/handwritten-note"
