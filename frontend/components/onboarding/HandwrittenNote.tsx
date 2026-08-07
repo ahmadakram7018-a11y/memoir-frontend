@@ -11,8 +11,8 @@ export default function HandwrittenNote() {
           Dear Hafsa !
         </h2>
 
-        <p className="font-[family-name:var(--font-caveat)] text-[32px] text-[#2C2C2C]">
-          Every family has a story worth keeping, the quiet mornings,
+<p className="font-[family-name:var(--font-caveat)] text-[32px] text-[#2C2C2C]">
+            Every family has a story worth keeping, the quiet mornings,
           the faded photographs, and the voices you never want to lose.
           We built this space to hold those precious pieces safe for you
           and the ones you love.
