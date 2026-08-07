@@ -1,15 +1,17 @@
+import Link from "next/link";
+
 export default function HandwrittenNote() {
   return (
-    <section className="flex flex-col items-center py-16">
+    <section className="flex flex-col items-center justify-center py-20">
 
       {/* Note */}
-      <div className="w-[250px] border border-[#D8CEC7] bg-white p-6">
+      <div className="w-[420px] border border-[#D8CEC7] bg-white rounded-lg p-8">
 
-        <h2 className="text-center text-3xl text-black mb-6">
+        <h2 className="text-center text-[34px] font-bold text-black mb-8">
           Dear Hafsa !
         </h2>
 
-        <p className="text-center text-black leading-8 text-xl">
+        <p className="text-center text-[30px] font-normal leading-[48px] text-black">
           Every family has a story worth keeping, the quiet mornings,
           the faded photographs, and the voices you never want to lose.
           We built this space to hold those precious pieces safe for you
@@ -19,15 +21,21 @@ export default function HandwrittenNote() {
       </div>
 
       {/* Buttons */}
-      <div className="flex gap-4 mt-10">
+      <div className="flex gap-6 mt-10">
 
-        <button className="bg-[#B7A79A] text-white px-10 py-3 rounded">
+        <Link
+          href="/login"
+          className="bg-[#B7A79A] text-white text-[28px] font-bold px-12 py-3 rounded-lg hover:bg-[#A79588] transition"
+        >
           Back
-        </button>
+        </Link>
 
-        <button className="bg-[#B7A79A] text-white px-10 py-3 rounded">
+        <Link
+          href="/subscription"
+          className="bg-[#B7A79A] text-white text-[28px] font-bold px-12 py-3 rounded-lg hover:bg-[#A79588] transition"
+        >
           Continue
-        </button>
+        </Link>
 
       </div>
 
