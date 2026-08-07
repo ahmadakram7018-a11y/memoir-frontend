@@ -4,9 +4,8 @@ export default function Hero() {
   return (
     <section className="max-w-7xl mx-auto px-8 py-20">
       <div className="flex justify-between items-center">
-
         {/* Left Side */}
-        <div className="-ml-30">
+        <div className="w-full">
 
           <h1 className="text-[#1D1D1D] text-[48px] font-bold leading-[58px] max-w-[520px]">
             A shared family
@@ -41,7 +40,6 @@ export default function Hero() {
             </Link>
 
           </div>
-
         </div>
 
         {/* Right Side */}
