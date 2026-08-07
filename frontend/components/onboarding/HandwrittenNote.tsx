@@ -11,7 +11,7 @@ export default function HandwrittenNote() {
           Dear Hafsa !
         </h2>
 
-        <p className="text-center text-[30px] font-normal leading-[48px] text-black">
+        <p className="font-[family-name:var(--font-caveat)] text-[32px] text-[#2C2C2C]">
           Every family has a story worth keeping, the quiet mornings,
           the faded photographs, and the voices you never want to lose.
           We built this space to hold those precious pieces safe for you
@@ -32,7 +32,7 @@ export default function HandwrittenNote() {
 
         <Link
           href="/subscription"
-          className="bg-[#B7A79A] text-white text-[28px] font-bold px-12 py-3 rounded-lg hover:bg-[#A79588] transition"
+          className="bg-[#B7A79A] text-white text-[28px] font-bold px-7 py-3 rounded-lg hover:bg-[#A79588] transition"
         >
           Continue
         </Link>
