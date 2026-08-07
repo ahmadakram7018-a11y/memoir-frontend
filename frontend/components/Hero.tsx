@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="grid grid-cols-1 lg:grid-cols-12 items-center gap-12 max-w-7xl mx-auto px-8 py-12">
       
       {/* Left Side: Heading, Description, and Action Buttons */}
-      <div className="lg:col-span- w-full">
+      <div className="lg:col-span-7 w-full">
         
         <h1 className="text-[#1D1D1D] text-[48px] font-bold leading-[58px] max-w-[520px]">
           A shared family
