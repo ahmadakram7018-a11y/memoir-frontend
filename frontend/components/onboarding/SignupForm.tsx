@@ -53,7 +53,7 @@ export default function SignupForm() {
         <p className="text-center text-black text-[20px] my-5">
           or
         </p>
-
+ 
         <button className="w-full py-3 border border-black rounded text-black text-[20px] font-semibold flex items-center justify-center gap-3">
           <img
             src=".\google.png"

@@ -64,7 +64,7 @@ export default function LoginForm() {
           </button>
 
         </div>
-
+ 
         {/* Bottom */}
         <div className="border border-black rounded-lg mt-7 py-4 text-center text-[20px] text-black">
 
