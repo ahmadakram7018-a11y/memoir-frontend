@@ -27,6 +27,14 @@ export default function LoginForm() {
           className="w-full mt-10 px-5 py-4 border border-black rounded-lg text-[18px] text-black placeholder:text-gray-500 outline-none"
         />
 
+
+        <input
+          type="password"
+          placeholder="Password"
+          className="w-full mt-4 px-5 py-4 border border-black rounded-lg text-[18px] text-black placeholder:text-gray-500 outline-none"
+        />
+
+
         {/* Remember / Forgot */}
         <div className="flex justify-between items-center mt-6 text-black text-[20px]">
           <label className="flex items-center gap-3 cursor-pointer">
