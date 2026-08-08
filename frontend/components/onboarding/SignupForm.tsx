@@ -68,14 +68,7 @@ export default function SignupForm() {
           or
         </p>
  
-        <button className="w-full py-3 border border-black rounded text-black text-[20px] font-semibold flex items-center justify-center gap-3">
-          <img
-            src=".\google.png"
-            alt="Google"
-            className="w-9 h-5 -ml-1"
-          />
-          Continue with Google
-        </button>
+        
 
         <p className="text-center text-[18px] font-semibold text-black mt-6">
           By clicking create an account you agree to the
