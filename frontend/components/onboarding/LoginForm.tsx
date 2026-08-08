@@ -54,12 +54,12 @@ export default function LoginForm() {
         </div>
 
         {/* Buttons */}
-        <div className="grid grid-cols-2 gap-4 mt-6">
+        <div className="mt-6">
 
           
 
           <button
-            className="bg-[#a7cdbd] text-white rounded py-3 font-semibold text-center flex items-center justify-center"
+            className="w-full bg-[#a7cdbd] text-white rounded-lg py-4 font-semibold text-center flex items-center justify-center"
           >
             Login
           </button>
