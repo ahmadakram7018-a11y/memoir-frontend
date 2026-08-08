@@ -42,19 +42,21 @@ export default function SignupForm() {
           className="w-full mt-4 px-5 py-4 border border-black rounded-lg text-[18px] text-black placeholder:text-gray-500 outline-none"
         />
 
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full mt-4 px-5 py-4 border border-black rounded-lg text-[18px] text-black placeholder:text-gray-500 outline-none"
-        />
+        <div className="grid grid-cols-2 gap-4 mt-4">
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full px-5 py-4 border border-black rounded-lg text-[18px] text-black placeholder:text-gray-500 outline-none"
+          />
 
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          className="w-full mt-4 px-5 py-4 border border-black rounded-lg text-[18px] text-black placeholder:text-gray-500 outline-none"
-        />
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            className="w-full px-5 py-4 border border-black rounded-lg text-[18px] text-black placeholder:text-gray-500 outline-none"
+          />
+        </div>
 
-        
+
         <Link
           href="/handwritten-note"
           className="block w-full mt-6 py-3 rounded bg-[#a7cdbd] text-white text-[24px] font-bold text-center"
