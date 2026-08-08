@@ -59,7 +59,7 @@ export default function LoginForm() {
           
 
           <button
-            className="w-full bg-[#a7cdbd] text-white rounded-lg py-4 font-semibold text-center flex items-center justify-center"
+            className="w-full bg-[#a7cdbd] text-white rounded-lg py-4 text-[20px] font-semibold text-center flex items-center justify-center"
           >
             Login
           </button>
