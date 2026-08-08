@@ -56,14 +56,7 @@ export default function LoginForm() {
         {/* Buttons */}
         <div className="grid grid-cols-2 gap-4 mt-6">
 
-          <button className="border border-black py-3 rounded-lg flex justify-center items-center gap-1 text-[15px] font-semibold text-black">
-            <img
-              src=".\google.png"
-              alt="Google"
-              className="w-9 h-5 -ml-1"
-            />
-            Continue with Google
-          </button>
+          
 
           <button
             className="bg-[#a7cdbd] text-white rounded py-3 font-semibold text-center flex items-center justify-center"
