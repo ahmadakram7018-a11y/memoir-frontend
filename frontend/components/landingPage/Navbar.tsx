@@ -7,7 +7,7 @@ export default function Navbar() {
 
       <Logo />
 
-      <ul className="flex items-center gap-10 text-[18px] font-medium text-[#2C2C2C] tracking-[0.2px]">
+      <ul className="flex items-center gap-10 text-[22px] font-bold text-[#1D1D1D] tracking-[0.2px]">
         <li>
           <Link href="/" className="hover:text-[#B7A79A] transition">
             Home
