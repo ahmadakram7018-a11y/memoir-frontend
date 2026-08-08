@@ -4,7 +4,14 @@ export default function LoginForm() {
   return (
     <section className="flex justify-center items-center py-20">
       <div className="w-[650px] bg-white border border-[#D8CEC8] rounded-lg p-10">
-
+        <span className="mb-6">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-[16px] font-medium text-[#6B5E53] hover:text-[#2C2C2C] transition"
+          >
+            <span><b>←</b></span>
+          </Link>
+        </span>
         {/* Heading */}
         <h1 className="text-center text-[40px] font-bold leading-[52px] text-black">
           Welcome Back !
@@ -19,12 +26,6 @@ export default function LoginForm() {
           type="email"
           placeholder="Email"
           className="w-full mt-10 px-5 py-4 border border-black rounded-lg text-[18px] text-black placeholder:text-gray-500 outline-none"
-        />
-
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full mt-4 px-5 py-4 border border-black rounded-lg text-[18px] text-black placeholder:text-gray-500 outline-none"
         />
 
         {/* Remember / Forgot */}
