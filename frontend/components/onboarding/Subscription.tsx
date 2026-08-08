@@ -9,17 +9,6 @@ export default function Subscription() {
           Complete Your Subscription
         </h1>
 
-        {/* Contact */}
-        <h2 className="text-[22px] font-bold mb-4 text-black">
-          Contact
-        </h2>
-
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full h-14 border border-black rounded-lg px-5 mb-8 text-[18px] text-black placeholder:text-gray-500 outline-none"
-        />
-
         {/* Payment */}
         <div className="flex justify-between items-center mb-2">
           <h2 className="text-[22px] font-bold text-black">
@@ -28,15 +17,15 @@ export default function Subscription() {
 
           <div className="flex gap-2">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png"
+              src="/visa.png"
               alt="Visa"
-              className="h-5 object-contain"
+              className="w-10 h-10"
             />
 
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+              src="/masterCard.png"
               alt="Mastercard"
-              className="h-5"
+              className="w-10 h-10"
             />
           </div>
         </div>
@@ -71,7 +60,7 @@ export default function Subscription() {
           className="w-full h-14 border border-black rounded-lg px-5 mb-8 text-[18px] text-black placeholder:text-gray-500 outline-none"
         />
 
-        <div className="flex justify-between">
+        <div className="flex justify-between ">
 
           <Link
             href="/handwritten-note"
