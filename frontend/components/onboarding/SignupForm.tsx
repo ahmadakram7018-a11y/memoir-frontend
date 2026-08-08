@@ -5,6 +5,14 @@ export default function SignupForm() {
   return (
     <section className="flex justify-center items-center py-20">
       <div className="w-[650px] bg-white border border-[#D8CEC8] rounded-lg p-10">
+        <span className="mb-6">
+          <Link
+            href="/"
+            className="inline-flex text-[16px] font-medium text-[#6B5E53] hover:text-[#2C2C2C] transition -ml-2"
+          >
+            <span><b>←</b></span>
+          </Link>
+        </span>
 
         <div className="flex justify-between items-start">
           <h2 className="text-[34px] font-bold text-black">
@@ -37,7 +45,7 @@ export default function SignupForm() {
 
         <Link
           href="/handwritten-note"
-          className="block w-full mt-6 py-3 rounded bg-[#B7A79A] text-white text-[24px] font-bold text-center"
+          className="block w-full mt-6 py-3 rounded bg-[#a7cdbd] text-white text-[24px] font-bold text-center"
         >
           Continue
         </Link>
@@ -47,6 +55,11 @@ export default function SignupForm() {
         </p>
 
         <button className="w-full py-3 border border-black rounded text-black text-[20px] font-semibold flex items-center justify-center gap-3">
+          <img
+            src=".\google.png"
+            alt="Google"
+            className="w-9 h-5 -ml-1"
+          />
           Continue with Google
         </button>
 

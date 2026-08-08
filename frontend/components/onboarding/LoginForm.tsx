@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 export default function LoginForm() {
   return (
     <section className="flex justify-center items-center py-20">
@@ -49,21 +48,20 @@ export default function LoginForm() {
         {/* Buttons */}
         <div className="grid grid-cols-2 gap-4 mt-6">
 
-          <button className="border border-black py-3 rounded-lg flex justify-center items-center gap-2 text-[15px] font-semibold text-black">
+          <button className="border border-black py-3 rounded-lg flex justify-center items-center gap-1 text-[15px] font-semibold text-black">
             <img
-              src="https://www.google.com/favicon.ico"
+              src=".\google.png"
               alt="Google"
-              className="w-5 h-5"
+              className="w-9 h-5 -ml-1"
             />
             Continue with Google
           </button>
 
-          <Link
-            href="/handwritten-note"
-            className="bg-[#B7A79A] text-white rounded py-3 font-semibold text-center flex items-center justify-center"
+          <button
+            className="bg-[#a7cdbd] text-white rounded py-3 font-semibold text-center flex items-center justify-center"
           >
             Login
-          </Link>
+          </button>
 
         </div>
 

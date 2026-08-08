@@ -64,12 +64,12 @@ export default function Subscription() {
 
           <Link
             href="/handwritten-note"
-            className="w-[150px] h-14 bg-[#B8A79C] text-white text-[20px] font-bold rounded-lg hover:bg-[#A79588] transition flex items-center justify-center"
+            className="w-[150px] h-14 bg-[#a7cdbd] text-white text-[20px] font-bold rounded-lg hover:bg-[#a7cdbd] transition flex items-center justify-center"
           >
             Back
           </Link>
           <button
-            className="w-[150px] h-14 bg-[#B8A79C] text-white text-[20px] font-bold rounded-lg hover:bg-[#A79588] transition flex items-center justify-center"
+            className="w-[150px] h-14 bg-[#a7cdbd] text-white text-[20px] font-bold rounded-lg hover:bg-[#a7cdbd] transition flex items-center justify-center"
           >
             Pay Now
           </button>
