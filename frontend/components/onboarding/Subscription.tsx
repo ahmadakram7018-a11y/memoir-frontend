@@ -68,14 +68,11 @@ export default function Subscription() {
           >
             Back
           </Link>
-
-          <Link
-            href="/subscription-success"
-            className="w-[160px] h-14 bg-[#B8A79C] text-white text-[20px] font-bold rounded-lg hover:bg-[#A79588] transition flex items-center justify-center"
+          <button
+            className="w-[150px] h-14 bg-[#B8A79C] text-white text-[20px] font-bold rounded-lg hover:bg-[#A79588] transition flex items-center justify-center"
           >
             Pay Now
-          </Link>
-
+          </button>
         </div>
 
       </div>
