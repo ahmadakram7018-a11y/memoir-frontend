@@ -24,9 +24,14 @@ export default function LoginForm() {
     if (error) {
       alert("Login failed: " + error.message);
     } else {
+      if (data.user) {
+        await supabase
+          .from("user_account")
+          .update({ last_login_at: new Date().toISOString() }) // Sets current date & time
+          .eq("id", data.user.id); // Matches the logged-in user's UUID
+      }
       alert("Login successful!");
-      // Redirect to your dashboard or main app page after login
-      router.push("/"); 
+      router.push("/");
     }
     setLoading(false);
   };
@@ -42,7 +47,7 @@ export default function LoginForm() {
             <span><b>←</b></span>
           </Link>
         </span>
-        
+
         {/* Heading */}
         <h1 className="text-center text-[40px] font-bold leading-[52px] text-black">
           Welcome Back !
@@ -102,7 +107,7 @@ export default function LoginForm() {
             </button>
           </div>
         </form>
- 
+
         {/* Bottom */}
         <div className="border border-black rounded-lg mt-7 py-4 text-center text-[20px] text-black">
           Not a member yet ?
