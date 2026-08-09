@@ -23,7 +23,7 @@ export default function HandwrittenNote() {
       <div className="flex gap-6 mt-10">
 
         <Link
-          href="/login"
+          href="/signup"
           className="bg-[#a7cdbd] text-white text-[28px] font-bold px-12 py-3 rounded-lg hover:bg-[#a7cdbd] transition"
         >
           Back
