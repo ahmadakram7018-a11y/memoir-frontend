@@ -39,7 +39,7 @@ export default function Hero() {
           </Link>
         </div>
         <Link
-          href="/chooseFormat"
+          href="/who_is_this_for"
           className="inline-block w-full sm:w-auto px-8 py-4 bg-[#1a3628] text-white text-center rounded-xl font-medium hover:bg-[#132a1e] transition-colors"
         >
           Begin Your Memoir
