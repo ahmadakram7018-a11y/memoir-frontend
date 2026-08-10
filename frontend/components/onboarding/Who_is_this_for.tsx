@@ -20,27 +20,6 @@ export default function WhoIsThisFor() {
   return (
     <div className="min-h-screen bg-stone-50 flex flex-col items-center px-6 py-8 font-sans">
       <div className="w-full max-w-md">
-        {/* Top Navigation & Progress Bar */}
-        <div className="flex items-center mb-10">
-          <button onClick={() => router.back()} className="p-2 -ml-2 text-stone-600 hover:text-stone-900">
-            <ArrowLeft size={24} />
-          </button>
-          <div className="flex-1 flex justify-center items-center space-x-2">
-            {[1, 2, 3, 4, 5, 6, 7].map((step) => (
-              <div
-                key={step}
-                className={`flex items-center justify-center w-6 h-6 rounded-full text-xs font-medium ${
-                  step === 2 
-                    ? 'bg-[#1a3628] text-white' 
-                    : 'text-stone-400'
-                }`}
-              >
-                {step}
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Headers */}
         <div className="text-center mb-8">
           <h1 className="text-2xl font-semibold text-stone-800 mb-2">
