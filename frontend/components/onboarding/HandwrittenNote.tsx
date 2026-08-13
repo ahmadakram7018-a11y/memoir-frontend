@@ -44,7 +44,7 @@ export default function HandwrittenNote() {
         style={{ animationDelay: "1.7s" }}
       >
         <Link
-          href="/onboarding"
+          href="/signup"
           className="rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-on-accent shadow-[0_8px_28px_rgba(217,166,92,0.3)] transition-all duration-500 ease-out hover:-translate-y-0.5 hover:bg-accent-hover hover:shadow-[0_14px_44px_rgba(217,166,92,0.45)]"
         >
           Begin

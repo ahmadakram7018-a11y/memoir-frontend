@@ -20,7 +20,7 @@ export default function FinalCta() {
 
         <div className="mt-8 flex flex-col items-center gap-3">
           <Link
-            href="/signup"
+            href="/handwritten-note"
             className="rounded-full bg-accent px-7 py-4 text-base font-semibold text-on-accent shadow-[0_8px_28px_rgba(217,166,92,0.25)] transition-all duration-500 ease-out hover:-translate-y-0.5 hover:bg-accent-hover hover:shadow-[0_14px_44px_rgba(217,166,92,0.4)]"
           >
             Start their memoir

@@ -25,7 +25,7 @@ export default function Navbar() {
             Log in
           </Link>
           <Link
-            href="/signup"
+            href="/handwritten-note"
             className="rounded-full bg-accent px-5 py-2.5 text-[0.95rem] font-semibold text-on-accent shadow-[0_0_0_0_rgba(217,166,92,0)] transition-all duration-500 ease-out hover:-translate-y-0.5 hover:bg-accent-hover hover:shadow-[0_10px_32px_rgba(217,166,92,0.35)]"
           >
             Start your memoir

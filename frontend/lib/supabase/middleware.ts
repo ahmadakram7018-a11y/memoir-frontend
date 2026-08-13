@@ -2,8 +2,10 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 // Routes that require a signed-in Supabase session. Everything else
-// (landing page, /login, /signup, /auth/callback) stays public.
-const PROTECTED_PATHS = ["/onboarding", "/handwritten-note"];
+// (landing page, /handwritten-note, /login, /signup, /auth/callback) stays
+// public — the welcome note is shown *before* signup now, to a visitor who
+// isn't authenticated yet, so it can't be gated behind a session check.
+const PROTECTED_PATHS = ["/onboarding"];
 
 function isProtected(pathname: string): boolean {
   return PROTECTED_PATHS.some(

@@ -1,4 +1,4 @@
-# Memoir — Product Spec: Landing → Sign up → Welcome Note → Onboarding
+# Memoir — Product Spec: Landing → Welcome Note → Sign up → Onboarding
 
 This is the spec for the first four screens a Memoir owner ever sees, and the
 reasoning behind every decision in them. It assumes no prior context — read
@@ -36,11 +36,25 @@ use this" while looking at owner-facing pages.
 ## The flow
 
 ```
-Landing (/)  →  Sign up (/signup)  →  Welcome note (/handwritten-note)  →  Onboarding (/onboarding)  →  the product
+Landing (/)  →  Welcome note (/handwritten-note)  →  Sign up (/signup)  →  Onboarding (/onboarding)  →  the product
 ```
 
 Each arrow is a moment the owner could leave. Every screen is designed to
 move them one step further without ever feeling rushed or tricked.
+
+**Why the note comes before signup, not after:** earlier versions of this
+spec placed the note right after signup, on the theory that it should be
+the first thing a *real, authenticated* user sees. In practice, the trust
+problem is at its worst one step earlier — at the moment right after
+someone clicks "Start your memoir" on the landing page, before they've
+committed anything at all. Asking a grieving person for an email and
+password with zero acknowledgment of why they're there is the colder
+experience; showing them the note first, then asking for an account, means
+nobody has to trade an email address for empathy. The note works
+identically either way — its copy never assumed an authenticated user to
+begin with (see "Why it can't address the owner by name" below) — so
+moving it earlier cost nothing and closes a trust gap that used to sit
+right at the account wall.
 
 ---
 
@@ -78,10 +92,42 @@ relative worrying that *they'll* be charged just for adding a memory.
 
 ---
 
-## 2. Sign up (`/signup`)
+## 2. Welcome note (`/handwritten-note`)
+
+**Job:** the emotional handshake. No fields, no navigation chrome, one
+button. Public — no account exists yet.
+
+This screen exists to prove *we understand why you're here* before asking
+for anything else — including an email address. It sits **before** signup,
+right after someone clicks a landing-page CTA, so the very first thing that
+happens after "yes, I want this" is a moment of acknowledgment, not a form.
+
+**Why it can't address the owner by name:** at this point there's no
+account, no email, nothing — name collection doesn't happen until step one
+of onboarding, two screens later. The note is addressed to "friend,"
+universally, rather than faking personalization it can't yet deliver. This
+was true even when the note sat after signup in an earlier version of this
+flow, so moving it earlier changed nothing about the copy.
+
+**Design choices:**
+
+- **Full screen, zero navigation chrome** — anything that looks like "the
+  app" breaks the letter feeling.
+- **Handwritten typeface (Caveat), reserved exclusively for this note** — it
+  never appears elsewhere, so it keeps its emotional weight.
+- **A single "Begin" button, in the UI typeface, not the handwritten one** —
+  the deliberate seam: the *letter* is personal and handwritten, the
+  *control* is clearly a control. It leads to `/signup`.
+- **"Whenever you're ready" under the button.** No auto-advance, no timer.
+- **Three short lines, not five paragraphs** — the ache, the promise, the
+  signature — each arriving on its own beat.
+
+---
+
+## 3. Sign up (`/signup`)
 
 **Job:** create the account, as fast as possible, without re-litigating
-anything the landing page already promised.
+anything the landing page or the welcome note already covered.
 
 | Field | Required? | Why |
 |---|---|---|
@@ -106,43 +152,15 @@ could still claim they didn't know.
 provider like Stripe, not to store card numbers directly (a first-party
 card form would be both a worse experience and a PCI-compliance liability).
 **This is not wired up yet** — there is no checkout endpoint on the backend,
-so today `signup` succeeds and goes straight to `/handwritten-note`. See
+so today `signup` succeeds and goes straight to `/onboarding`. See
 `Frontend_guide.md`'s "Known gaps" for the `TODO(billing)` marker.
 
 **Email confirmation:** if Supabase's "Confirm email" setting is on,
 `signUp()` returns no session and the form shows a "check your email"
 screen instead of pushing forward into a flow with no authenticated user to
-save onboarding answers against.
-
----
-
-## 3. Welcome note (`/handwritten-note`)
-
-**Job:** the emotional handshake. No fields, no navigation chrome, one
-button.
-
-This screen exists to prove *we understand why you're here* before asking
-for anything else. It sits **after** signup (the owner is now a real,
-authenticated user) and **before** onboarding (before any more questions) —
-a pure moment, not attached to a form on either side.
-
-**Why it can't address the owner by name:** name collection is step one of
-onboarding, immediately after this screen — we don't have it yet. The note
-is addressed to "friend," universally, rather than faking personalization
-it can't yet deliver.
-
-**Design choices:**
-
-- **Full screen, zero navigation chrome** — anything that looks like "the
-  app" breaks the letter feeling.
-- **Handwritten typeface (Caveat), reserved exclusively for this note** — it
-  never appears elsewhere, so it keeps its emotional weight.
-- **A single "Begin" button, in the UI typeface, not the handwritten one** —
-  the deliberate seam: the *letter* is personal and handwritten, the
-  *control* is clearly a control.
-- **"Whenever you're ready" under the button.** No auto-advance, no timer.
-- **Three short lines, not five paragraphs** — the ache, the promise, the
-  signature — each arriving on its own beat.
+save onboarding answers against. The confirmation link redirects through
+`/auth/callback`, which exchanges it for a session and then sends the
+now-authenticated user into `/onboarding`.
 
 ---
 
@@ -196,8 +214,8 @@ direct client-side Supabase write.
 | Screen | Required fields | Optional fields |
 |---|---|---|
 | Landing | none | none |
-| Sign up | Email, Password | none |
 | Welcome note | none | none |
+| Sign up | Email, Password | none |
 | Onboarding | Owner's name, Subject's name, Relationship | none |
 
 Zero optional fields anywhere in this flow. Every field that made the cut is

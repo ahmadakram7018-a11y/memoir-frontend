@@ -1,8 +1,8 @@
 # Memoir Frontend Guide
 
 How the frontend is built, what each piece does, and why. Read
-[`SPEC.md`](./SPEC.md) first for the *flow* reasoning (landing → signup →
-welcome note → onboarding); this file is about the *implementation*.
+[`SPEC.md`](./SPEC.md) first for the *flow* reasoning (landing → welcome
+note → signup → onboarding); this file is about the *implementation*.
 
 ## What this pass did
 
@@ -25,7 +25,28 @@ welcome note → onboarding); this file is about the *implementation*.
    that had drifted out of sync with the code (it described a backend call
    in `LoginForm.tsx` that no longer exists, and raised an "open question"
    about `full_name` that item 1 above resolves).
-4. **Rewrote this file and `SPEC.md` in full.**
+4. **Fixed a stray Python-template `.gitignore` rule** (a bare `lib/` line
+   meant for Python's `build/lib/`) that was silently keeping the entire
+   `frontend/lib/` directory — including every Supabase client — out of
+   every commit. It existed locally and passed local builds, but Vercel
+   builds from git, so production builds failed with "Module not found" on
+   every file importing `@/lib/supabase/*`.
+5. **Fixed email-confirmation links landing on the homepage instead of
+   `/auth/callback`.** `SignupForm.tsx`'s `signUp()` call had no
+   `emailRedirectTo`, so Supabase fell back to the project's bare Site URL,
+   dropping an unhandled `?code=` on `/` — no session was ever created, so
+   nothing past signup ever appeared. Now passes
+   `emailRedirectTo: ${window.location.origin}/auth/callback`, same pattern
+   already used for the Google OAuth redirect. **This also requires
+   `https://<your-domain>/auth/callback` to be in Supabase's Authentication
+   → URL Configuration → Redirect URLs allow-list** — Supabase silently
+   falls back to the Site URL again if the target isn't allow-listed, even
+   with the code fix in place.
+6. **Reordered the flow**: the welcome note now runs *before* signup, not
+   after (`Landing → Welcome note → Sign up → Onboarding`). See SPEC.md's
+   "Why the note comes before signup, not after" and "Auth and backend
+   contract" below for what moved.
+7. **Rewrote this file and `SPEC.md` in full.**
 
 ## Stack
 
@@ -66,13 +87,17 @@ never see. `createBrowserClient` (browser side) and `createServerClient`
   `supabase.auth.getUser()` — deliberately *not* `getSession()`, which only
   reads the cookie and would accept a stale/tampered one — to revalidate the
   session against Supabase's Auth server on every request, refresh the
-  session cookie, and redirect signed-out users away from
-  `/onboarding` and `/handwritten-note`.
+  session cookie, and redirect signed-out users away from `/onboarding` —
+  the only route that still requires a session. `/handwritten-note` used to
+  be gated here too, back when it ran after signup; now it runs before
+  signup, to a visitor with no account yet, so it has to stay public.
 - `app/auth/callback/route.ts` — where Google OAuth *and* email-confirmation
   links both land (Supabase's PKCE flow sends both through a `?code=`
-  param). Exchanges the code for a session, then checks
-  `user_account.full_name`: set → the person already finished onboarding
-  once, send them to `/`; unset → send them into `/onboarding`.
+  param). Requires `https://<domain>/auth/callback` to be allow-listed in
+  Supabase's Redirect URLs (see item 5 in "What this pass did"). Exchanges
+  the code for a session, then checks `user_account.full_name`: set → the
+  person already finished onboarding once, send them to `/`; unset → send
+  them into `/onboarding`.
 - `lib/supabaseClient.ts` — **do not import from here.** Deliberately left
   as a dead re-export (`export { createClient } from "./supabase/client"`)
   so a stray old import fails loudly at compile time instead of silently
@@ -107,7 +132,7 @@ memoir-frontend/
       layout.tsx, page.tsx      — root layout, landing page
       globals.css                — design tokens, base styles, motion primitives
       fonts.ts, fonts/            — self-hosted .woff2 files
-      signup/, login/, handwritten-note/, onboarding/  — one page.tsx per route
+      handwritten-note/, signup/, login/, onboarding/  — one page.tsx per route
       auth/callback/route.ts      — OAuth + email-confirmation code exchange
     components/
       landing/                    — Navbar, Hero, Problem, Epigraph, HowItWorks,
@@ -125,18 +150,20 @@ memoir-frontend/
 ## Components
 
 **Auth**
-- **`SignupForm.tsx`** — email/password + Google OAuth. On success with a
-  session, redirects to `/handwritten-note`; if Supabase's "Confirm email"
-  is on and no session comes back, shows a "check your email" screen
-  instead. A `TODO(billing)` comment marks where a Stripe Checkout redirect
-  belongs once that endpoint exists.
+- **`SignupForm.tsx`** — email/password (with `emailRedirectTo` set — see
+  "What this pass did") + Google OAuth. On success with a session, redirects
+  to `/onboarding`; if Supabase's "Confirm email" is on and no session comes
+  back, shows a "check your email" screen instead. A `TODO(billing)` comment
+  marks where a Stripe Checkout redirect belongs once that endpoint exists.
 - **`LoginForm.tsx`** — email/password + Google OAuth. On success, updates
   `last_login_at` (client-side, allowed by RLS on the caller's own row) and
-  redirects to `/`.
+  redirects to `/`. Its "Start a memoir" link (for a non-member) goes to
+  `/handwritten-note`, same entry point as every landing-page CTA.
 
 **Onboarding**
-- **`HandwrittenNote.tsx`** — static, no state. Full-bleed `.well` section,
-  Caveat type, one "Begin" link to `/onboarding`.
+- **`HandwrittenNote.tsx`** — static, no state, **public** (no session
+  required — see "Auth and backend contract"). Full-bleed `.well` section,
+  Caveat type, one "Begin" link to `/signup`.
 - **`OnboardingFlow.tsx`** — 4-step client component (`step: 0 | 1 | 2 | 3`):
   owner's name → subject's name → relationship chips → payoff screen. On
   the final "Continue," calls `POST /auth/onboarding` (see above) and shows
@@ -216,7 +243,7 @@ it as a constraint on the eventual "publish" feature's backend design.
    ("Invite family," "Add your first memory") both link to `/` as a
    placeholder, since there's no real destination yet.
 2. **No billing/checkout endpoint yet.** `SignupForm.tsx` redirects straight
-   to `/handwritten-note` after signup. `Subscription`'s
+   to `/onboarding` after signup. `Subscription`'s
    `provider`/`provider_customer_id`/`provider_subscription_id` columns
    confirm the intended path is a provider like Stripe — never build a
    first-party card-number form against this schema.

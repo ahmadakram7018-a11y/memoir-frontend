@@ -141,7 +141,7 @@ export default function LoginForm() {
 
         <p className="mt-8 text-center text-[0.95rem] text-ink-soft">
           Not a member yet?{" "}
-          <Link href="/signup" className="font-semibold text-accent transition-colors duration-500 ease-out hover:text-accent-bright hover:underline">
+          <Link href="/handwritten-note" className="font-semibold text-accent transition-colors duration-500 ease-out hover:text-accent-bright hover:underline">
             Start a memoir
           </Link>
         </p>

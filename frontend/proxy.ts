@@ -12,12 +12,11 @@ export async function proxy(request: NextRequest) {
 }
 
 // Runs on every request except static assets and image optimization
-// files. It has to run broadly, not just on /onboarding and
-// /handwritten-note — Supabase session cookies expire and need refreshing
-// on a schedule, and this is what does that refresh (see
-// lib/supabase/middleware.ts). The route-protection check inside decides
-// which requests actually get redirected; this matcher only decides which
-// requests get the session-refresh treatment at all.
+// files. It has to run broadly, not just on /onboarding — Supabase session
+// cookies expire and need refreshing on a schedule, and this is what does
+// that refresh (see lib/supabase/middleware.ts). The route-protection check
+// inside decides which requests actually get redirected; this matcher only
+// decides which requests get the session-refresh treatment at all.
 export const config = {
   matcher: [
     "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",

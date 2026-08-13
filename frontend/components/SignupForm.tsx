@@ -46,14 +46,15 @@ export default function SignupForm() {
 
     // TODO(billing): once the backend exposes a Stripe Checkout Session
     // endpoint, redirect here instead — Checkout's success_url should
-    // return to /handwritten-note so the welcome note stays the first
-    // thing the owner sees after paying, not a payment form.
+    // return to /onboarding so onboarding stays the first thing the owner
+    // sees after paying, not a payment form. The welcome note already ran
+    // before signup now, so it's not part of this handoff anymore.
 
     if (data.session) {
       // "Confirm email" is off in the Supabase dashboard (or this address
       // was already confirmed elsewhere) — signUp() handed back a live
       // session, so it's safe to move on immediately.
-      router.push("/handwritten-note");
+      router.push("/onboarding");
     } else {
       // "Confirm email" is on (Supabase Authentication → Providers →
       // Email → "Confirm email"). signUp() created the account but
