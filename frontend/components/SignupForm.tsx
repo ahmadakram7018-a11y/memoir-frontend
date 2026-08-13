@@ -26,6 +26,15 @@ export default function SignupForm() {
     const { data, error: authError } = await supabase.auth.signUp({
       email,
       password,
+      options: {
+        // Without this, Supabase's confirmation-email link falls back to
+        // whatever "Site URL" is configured in the dashboard and redirects
+        // there directly — landing a bare ?code= on the homepage instead
+        // of /auth/callback, where exchangeCodeForSession actually runs.
+        // Same origin-derived pattern as the Google OAuth redirect below,
+        // so it's correct on localhost, every Vercel preview, and prod.
+        emailRedirectTo: `${window.location.origin}/auth/callback`,
+      },
     });
 
     setLoading(false);
