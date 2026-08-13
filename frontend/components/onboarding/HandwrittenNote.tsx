@@ -2,42 +2,55 @@ import Link from "next/link";
 
 export default function HandwrittenNote() {
   return (
-    <section className="flex flex-col items-center justify-center py-20">
+    <section className="well relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 py-16">
+      <div
+        aria-hidden
+        className="glow-orb left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 bg-accent/16"
+      />
 
-      {/* Note */}
-      <div className="w-[420px] border border-[#D8CEC7] bg-white rounded-lg p-5">
-
-        <h2 className="font-[family-name:var(--font-caveat)]  text-center text-[34px] font-bold text-black mb-1 -ml-2">
-          Dear Hafsa !
-        </h2>
-        <p className="font-[family-name:var(--font-caveat)] text-[32px] text-[#2C2C2C]">
-          Every family has a story worth keeping, the quiet mornings,
-          the faded photographs, and the voices you never want to lose.
-          We built this space to hold those precious pieces safe for you
-          and the ones you love.
+      <div className="relative max-w-xl text-center">
+        <p
+          className="animate-rise font-hand text-3xl text-ink-soft sm:text-4xl"
+          style={{ animationDelay: "0.1s" }}
+        >
+          Dear friend,
         </p>
 
+        <p
+          className="animate-rise mt-8 font-hand text-[2.1rem] leading-[1.3] text-ink sm:text-[2.5rem]"
+          style={{ animationDelay: "0.5s" }}
+        >
+          Whatever brought you here today, you don&rsquo;t have to hold their
+          memory alone.
+        </p>
+
+        <p
+          className="animate-rise mt-8 font-hand text-3xl text-ink-soft sm:text-4xl"
+          style={{ animationDelay: "1s" }}
+        >
+          We&rsquo;re here to help you keep it.
+        </p>
+
+        <p
+          className="animate-rise mt-10 font-hand text-2xl text-ink-faint"
+          style={{ animationDelay: "1.3s" }}
+        >
+          — Memoir
+        </p>
       </div>
 
-      {/* Buttons */}
-      <div className="flex gap-6 mt-10">
-
+      <div
+        className="animate-rise relative mt-14 flex flex-col items-center gap-2"
+        style={{ animationDelay: "1.7s" }}
+      >
         <Link
-          href="/signup"
-          className="bg-[#a7cdbd] text-white text-[28px] font-bold px-12 py-3 rounded-lg hover:bg-[#a7cdbd] transition"
+          href="/onboarding"
+          className="rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-on-accent shadow-[0_8px_28px_rgba(217,166,92,0.3)] transition-all duration-500 ease-out hover:-translate-y-0.5 hover:bg-accent-hover hover:shadow-[0_14px_44px_rgba(217,166,92,0.45)]"
         >
-          Back
+          Begin
         </Link>
- 
-        <Link
-          href="/subscription"
-          className="bg-[#a7cdbd] text-white text-[28px] font-bold px-7 py-3 rounded-lg hover:bg-[#a7cdbd] transition"
-        >
-          Continue
-        </Link>
-
+        <p className="text-sm text-ink-faint">Whenever you&rsquo;re ready.</p>
       </div>
-
     </section>
   );
 }

@@ -1,36 +1,11 @@
-// A wrapper file that defines layout elements shared accross webpages
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Playfair_Display } from "next/font/google";
+import { fraunces, publicSans, caveat } from "./fonts";
 import "./globals.css";
-import { Caveat } from "next/font/google"; 
-
-import AnnouncementBar from "../components/landingPage/AnnouncementBar";
-import Navbar from "../components/landingPage/Navbar";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-});
-
-const caveat = Caveat({
-  subsets: ["latin"],
-  variable: "--font-caveat",
-});
 
 export const metadata: Metadata = {
-  title: "Memoir",
-  description: "Memoir Project",
+  title: "Memoir — Keep your family's stories, together",
+  description:
+    "Memoir helps families gather a loved one's life story together, before it's lost — in voices, photos, and memories from everyone who knew them.",
 };
 
 export default function RootLayout({
@@ -41,11 +16,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${caveat.variable} antialiased`}
+      className={`${fraunces.variable} ${publicSans.variable} ${caveat.variable}`}
     >
-      <body className={`${playfair.className} min-h-screen bg-[#F8F2EF]`}>
-        <AnnouncementBar />
-        <Navbar />
+      <body>
+        <div aria-hidden className="grain-overlay" />
         {children}
       </body>
     </html>
