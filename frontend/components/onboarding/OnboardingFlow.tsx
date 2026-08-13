@@ -50,38 +50,44 @@ export default function OnboardingFlow() {
     setSaving(true);
     setError(null);
 
+    // POST /auth/onboarding (memoir-backend/app/api/routes/auth.py) is the
+    // single source of truth for this write — it's an authenticated,
+    // backend-owned UPDATE of the caller's own user_account row
+    // (full_name, subject_name, subject_relationship), guarded by the same
+    // JWT verification every other protected route uses. Calling it here
+    // instead of writing to Supabase directly from the browser keeps this
+    // one row's writes on one path instead of two racing writers.
     const {
-      data: { user },
-    } = await supabase.auth.getUser();
+      data: { session },
+    } = await supabase.auth.getSession();
 
-    if (user) {
-      const { error: updateError } = await supabase
-        .from("user_account")
-        .update({ full_name: ownerName.trim() })
-        .eq("id", user.id);
-
-      if (updateError) {
-        setSaving(false);
-        setError("We couldn't save your name — please try again.");
-        return;
-      }
+    if (!session) {
+      setSaving(false);
+      setError("Your session expired — please log in again.");
+      return;
     }
 
-    // The `memoir` table and this endpoint don't exist on the backend yet
-    // (see app/models/subscription.py's memoir_id comment). Attempt the
-    // call so the frontend is ready the moment it ships; fail quietly
-    // since this can't block onboarding today.
     try {
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/memoirs`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/onboarding`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session.access_token}`,
+        },
         body: JSON.stringify({
+          full_name: ownerName.trim(),
           subject_name: subjectName.trim(),
-          relationship: finalRelationship,
+          subject_relationship: finalRelationship,
         }),
       });
+
+      if (!res.ok) {
+        throw new Error(`Onboarding save failed with status ${res.status}`);
+      }
     } catch {
-      console.warn("Memoir creation endpoint not available yet — continuing.");
+      setSaving(false);
+      setError("We couldn't save your answers — please try again.");
+      return;
     }
 
     setSaving(false);
